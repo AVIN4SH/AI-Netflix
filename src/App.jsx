@@ -1,5 +1,7 @@
+import Body from "./components/Body";
+
 function App() {
-  return <>hi</>;
+  return <Body />;
 }
 
 export default App;
