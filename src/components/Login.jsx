@@ -22,7 +22,6 @@ const Login = () => {
     setErrorMessage(message);
 
     //Sign In / Sign Up Functionality using Authentication:
-    // Watch from 1:57:35
   };
 
   return (

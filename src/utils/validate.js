@@ -20,18 +20,3 @@ export const checkValidData = (email, password) => {
 
   return null;
 };
-
-{
-  /*<span>
-       <br />
-      "Password must contain:" <br />
-      <ul>
-        <li>Contain at least one digit.</li>
-        <li>Contain at least one lowercase letter</li>
-        <li>Contain at least one uppercase letter</li>
-        <li>Contain at least one special character</li>
-        <li>Be between 8 and 16 characters long</li>
-        <li>Not contain any spaces</li>
-      </ul>
-    </span> */
-}
