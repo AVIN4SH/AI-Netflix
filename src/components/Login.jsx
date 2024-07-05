@@ -2,6 +2,8 @@ import React, { useState, useRef } from "react";
 import Header from "./Header";
 import BGBANNER from "../assets/BG-BANNER.jpg";
 import { checkValidData } from "../utils/validate.js";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../utils/firebaseConfig.js";
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
@@ -21,7 +23,30 @@ const Login = () => {
     const message = checkValidData(email.current.value, password.current.value);
     setErrorMessage(message);
 
-    //Sign In / Sign Up Functionality using Authentication:
+    //Sign In / Sign Up Functionality using Authentication if there is no error messsage:
+    if (message) return;
+
+    //if no message exists then we do sign in / sign up:
+    if (!isSignInForm) {
+      // sign up:
+      createUserWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then((userCredentials) => {
+          const user = userCredentials.user;
+          // console.log(user);
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          setErrorMessage(errorCode + " - " + errorMessage);
+        });
+    } else {
+      //sign in:
+      //! do from 2:43:10 sign in logic
+    }
   };
 
   return (
