@@ -35,6 +35,13 @@ const Header = () => {
           >
             Sign Out
           </button>
+          <button
+            onClick={handleSignOut}
+            className="bg-transparent px-4 py-1 m-2 rounded text-white  transition-transform "
+          >
+            User Name:
+            {user.displayName}
+          </button>
         </div>
       )}
     </div>
