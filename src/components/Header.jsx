@@ -26,7 +26,7 @@ const Header = () => {
 
   //this will execute everytime state of auth changes like: on signUp, onSignIn, Logout.
   useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         // User is signed in
         const { uid, email, displayName } = user;
@@ -44,27 +44,29 @@ const Header = () => {
         navigate("/");
       }
     });
+    //logic to unsubscribe from this functionality of onAuthStateChanged when component unmounts.
+    return () => unsubscribe();
   }, []);
 
   return (
-    <div className="absolute w-screen px-16  py-2 bg-gradient-to-b flex  justify-between from-black">
+    <div className="absolute w-screen px-4 sm:px-8 md:px-16 py-2 bg-gradient-to-b from-black flex justify-between items-center">
       <img
         src={WideLogo}
         alt="logo"
         className="w-24 sm:w-32 md:w-36 lg:w-44 xl:w-48 2xl:w-52 p-2 sm:p-3 md:p-4"
       />
       {user && (
-        <div className="flex ">
+        <div className="flex items-center">
           <button
             onClick={handleSignOut}
-            className="bg-[#f00] px-4 py-1 m-2 rounded text-white hover:scale-105 transition-transform "
+            className="bg-red-500 px-4 py-1 m-2 rounded text-white hover:scale-105 transition-transform"
           >
             Sign Out
           </button>
-          <div className="flex justify-center items-center text-center">
-            <button className="bg-transparent px-4 py-1 m-2 rounded text-white  transition-transform ">
+          <div className="flex items-center text-center">
+            <button className="bg-transparent px-4 py-1 m-2 rounded text-white transition-transform flex items-center">
               <img className="w-8 mx-2" src={UserIcon} alt="user icon" />
-              {user.displayName}
+              <span className="hidden sm:inline">{user.displayName}</span>
             </button>
           </div>
         </div>
