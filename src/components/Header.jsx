@@ -57,18 +57,22 @@ const Header = () => {
       />
       {user && (
         <div className="flex items-center">
-          <button
-            onClick={handleSignOut}
-            className="bg-red-500 px-4 py-1 m-2 rounded text-white hover:scale-105 transition-transform"
-          >
-            Sign Out
-          </button>
           <div className="flex items-center text-center">
             <button className="bg-transparent px-4 py-1 m-2 rounded text-white transition-transform flex items-center">
-              <img className="w-8 mx-2" src={UserIcon} alt="user icon" />
+              <img
+                className="w-8 mx-2 hover:scale-105 transition-transform"
+                src={UserIcon}
+                alt="user icon"
+              />
               <span className="hidden sm:inline">{user.displayName}</span>
             </button>
           </div>
+          <button
+            onClick={handleSignOut}
+            className="bg-red-600 px-4 py-1 m-2 rounded text-white hover:scale-105 transition-transform"
+          >
+            Sign Out
+          </button>
         </div>
       )}
     </div>
