@@ -2,7 +2,10 @@ import React, { useState, useRef } from "react";
 import Header from "./Header";
 import BGBANNER from "../assets/BG-BANNER.jpg";
 import { checkValidData } from "../utils/validate.js";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 import { auth } from "../utils/firebaseConfig.js";
 
 const Login = () => {
@@ -45,7 +48,20 @@ const Login = () => {
         });
     } else {
       //sign in:
-      //! do from 2:43:10 sign in logic
+      signInWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then((userCredentials) => {
+          const user = userCredentials.user;
+          // console.log(user);
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          setErrorMessage(errorCode + " - " + errorMessage);
+        });
     }
   };
 
