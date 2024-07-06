@@ -5,15 +5,24 @@ import { checkValidData } from "../utils/validate.js";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  updateProfile,
 } from "firebase/auth";
 import { auth } from "../utils/firebaseConfig.js";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addUser } from "../utils/userSlice";
 
 const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null);
 
+  const navigate = useNavigate();
+
+  const dispatch = useDispatch();
+
   //we can get value entered in input fields using state variables, but here we use the useRef react hook:
   //to use this hook: first we initialize like this, then we provide ref={variableName} this as attribute in input tag and then this value is an input object from which if we need value we need to see: variableName.current.value
+  const name = useRef(null);
   const email = useRef(null);
   const password = useRef(null);
 
@@ -39,7 +48,26 @@ const Login = () => {
       )
         .then((userCredentials) => {
           const user = userCredentials.user;
-          // console.log(user);
+          updateProfile(user, {
+            displayName: name.current.value,
+          })
+            .then(() => {
+              //Profile Updated
+              const { uid, email, displayName } = auth.currentUser;
+              dispatch(
+                addUser({
+                  uid: uid,
+                  email: email,
+                  displayName: displayName,
+                })
+              );
+              navigate("/browse");
+              // console.log(user);
+            })
+            .catch((error) => {
+              //error occured
+              setErrorMessage(error);
+            });
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -56,6 +84,7 @@ const Login = () => {
         .then((userCredentials) => {
           const user = userCredentials.user;
           // console.log(user);
+          navigate("/browse");
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -82,6 +111,7 @@ const Login = () => {
           {!isSignInForm && (
             <input
               type="text"
+              ref={name}
               placeholder="Full Name"
               className="p-4 m-2 w-[94%] rounded bg-black/45 border  border-[#818181] font-semibold focus:border-2 focus:border-white text-gray-200"
               required
