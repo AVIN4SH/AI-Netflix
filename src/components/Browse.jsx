@@ -1,29 +1,18 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Header from "./Header";
-import { TMBD_API_OPTIONS } from "../utils/constants";
+import useNowPlayingMovies from "../hooks/useNowPlayingMovies.js";
+import MainContainer from "./MainContainer.jsx";
+import SecondaryContainer from "./SecondaryContainer.jsx";
 
 const Browse = () => {
-  const getNowPlayingMovies = async () => {
-    try {
-      const data = await fetch(
-        "https://api.themoviedb.org/3/movie/now_playing?page=1",
-        TMBD_API_OPTIONS
-      );
-      const json = await data.json();
-      console.log(json);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  useEffect(() => {
-    getNowPlayingMovies();
-  }, []);
+  useNowPlayingMovies();
+  //calling our custom hook that fetches nowPlaying Movie data and update movieSlice in store by dispatching action.
 
   return (
     <div>
       <Header />
-      Browse
+      <MainContainer />
+      <SecondaryContainer />
     </div>
   );
 };
