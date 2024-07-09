@@ -49,18 +49,18 @@ const Header = () => {
   }, []);
 
   return (
-    <div className="absolute w-screen px-4 sm:px-8 md:px-16 py-2 bg-gradient-to-b from-black flex justify-between items-center">
+    <div className="absolute w-[99vw] px-4 sm:px-8 md:px-16 py-2 bg-gradient-to-b from-black flex justify-between items-center z-30">
       <img
         src={WideLogo}
         alt="logo"
-        className="w-24 sm:w-32 md:w-36 lg:w-44 xl:w-48 2xl:w-52 p-2 sm:p-3 md:p-4"
+        className="w-24 ml-6  sm:w-32 md:w-36 lg:w-44 xl:w-48 2xl:w-52 p-2 sm:p-3 md:p-4"
       />
       {user && (
         <div className="flex items-center">
           <div className="flex items-center text-center">
             <button className="bg-transparent px-4 py-1 m-2 rounded text-white transition-transform flex items-center">
               <img
-                className="w-8 mx-2 hover:scale-105 transition-transform"
+                className="w-8 mx-2 hover:scale-105 bg-white rounded-full transition-transform"
                 src={UserIcon}
                 alt="user icon"
               />
