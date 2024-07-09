@@ -2,7 +2,7 @@ import React from "react";
 
 const VideoTitle = ({ title, overview }) => {
   return (
-    <div className="absolute py-36 px-20 bg-gradient-to-r text-white  from-black/60 pt-[15%] w-3/4 h-full flex flex-col justify-center z-20">
+    <div className="absolute py-36 px-20 bg-gradient-to-r text-white  from-black/60 pt-[15%] lg:w-3/4 h-full flex flex-col justify-center z-20">
       <h1
         className="text-5xl  ml-3 font-semibold tracking-wide"
         style={{ textTransform: "capitalize" }}
