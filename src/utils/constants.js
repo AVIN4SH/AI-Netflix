@@ -7,3 +7,5 @@ export const TMBD_API_OPTIONS = {
     }.PBz4WHJb9N1DYezT0413BQhFmdCvL8FGMG1nrRwroSQ`,
   },
 };
+
+export const IMG_CDN_URL = "https://image.tmdb.org/t/p/w500/";

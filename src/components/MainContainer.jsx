@@ -8,16 +8,24 @@ const MainContainer = () => {
 
   if (!movies) return;
 
-  const mainMovie = movies[0]; //this is the main movies whose video will be shown
+  const randomNum = () => {
+    return Math.floor(Math.random() * 15);
+  };
+
+  const mainMovie = movies[randomNum()];
+  //we can hardcode this value to movies[0] to always show trailer of 1st movie only all the time
+  //this is the main movies whose video will be shown
   // console.log(mainMovie);
 
   const { original_title, overview, id } = mainMovie;
 
   return (
-    <div>
-      <VideoTitle title={original_title} overview={overview} />
-      <VideoBackground movieId={id} />
-    </div>
+    mainMovie && (
+      <div className="relative min-h-screen overflow-hidden">
+        <VideoTitle title={original_title} overview={overview} />
+        <VideoBackground movieId={id} />
+      </div>
+    )
   );
 };
 

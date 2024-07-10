@@ -11,7 +11,7 @@ const VideoBackground = ({ movieId }) => {
     <div className=" w-screen h-full overflow-hidden">
       {/* trailer video on youtube's embed code: */}
       <iframe
-        className="absolute top-0 left-0 w-full h-full  object-cover z-0 pointer-events-none "
+        className="absolute top-0 left-0 w-full h-full overflow-hidden  object-cover z-0 pointer-events-none "
         // className="w-[99vw] aspect-video h-auto "
         src={
           "https://www.youtube.com/embed/" +
