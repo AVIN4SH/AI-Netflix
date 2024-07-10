@@ -1,1 +1,1 @@
-# create a full fledged app where users can create acc, add/remove movies to and from favourite list, add to watch list, maintain a watched library containing already watched list and do similar stuff
+# add test acc id and password to login page so that people can see

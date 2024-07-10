@@ -4,10 +4,11 @@ import { signOut } from "firebase/auth";
 import { auth } from "../utils/firebaseConfig";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import UserIcon from "../assets/UserIcon.png";
+import RedUserIcon from "../assets/RedUserIcon.png";
 import { onAuthStateChanged } from "firebase/auth";
 import { useDispatch } from "react-redux";
 import { addUser, removeUser } from "../utils/userSlice";
+import { toggleGptSearchView } from "../utils/gptSlice";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -15,6 +16,8 @@ const Header = () => {
   const dispatch = useDispatch();
 
   const user = useSelector((store) => store.user);
+
+  const showGptSearch = useSelector((store) => store.gpt.showGptSearch);
 
   const handleSignOut = () => {
     signOut(auth)
@@ -48,6 +51,11 @@ const Header = () => {
     return () => unsubscribe();
   }, []);
 
+  const handleGPTSearchClick = () => {
+    //Toggle GPT Search
+    dispatch(toggleGptSearchView());
+  };
+
   return (
     <div className="absolute w-[99vw] px-4 sm:px-8 md:px-16 py-2 bg-gradient-to-b from-black flex justify-between items-center z-30">
       <img
@@ -58,10 +66,16 @@ const Header = () => {
       {user && (
         <div className="flex items-center">
           <div className="flex items-center text-center">
+            <button
+              onClick={handleGPTSearchClick}
+              className="bg-red-600 border-2 border-red-600 hover:border-white hover:border-2 px-4 py-1 m-2 rounded text-white hover:scale-105 transition-transform"
+            >
+              {showGptSearch ? "Home Page" : "GPT Search"}
+            </button>
             <button className="bg-transparent px-4 py-1 m-2 rounded text-white transition-transform flex items-center">
               <img
-                className="w-8 mx-2 hover:scale-105 bg-white rounded-full transition-transform"
-                src={UserIcon}
+                className="w-8 mx-2 hover:scale-110  transition-transform"
+                src={RedUserIcon}
                 alt="user icon"
               />
               <span className="hidden sm:inline">{user.displayName}</span>
