@@ -10,7 +10,7 @@ const GPTSearchPage = () => {
       className="bg-cover -z-10  bg-center h-[100vh] w-full"
     >
       <div className="absolute  flex flex-col w-[100vw] h-[100vh]  text-center py-24 px-16">
-        <div className=" bg-black  rounded">
+        <div className=" ">
           <GPTSearchBar />
           <GPTMovieSuggestion />
         </div>
