@@ -41,21 +41,21 @@ const MovieList = ({ title, movies }) => {
 
   return (
     movies && (
-      <div className="relative px-6 py-4">
-        <h1 className="text-3xl py-2 tracking-widest font-semibold text-white">
+      <div className="relative px-4 sm:px-6 lg:px-8 py-2 sm:py-4">
+        <h1 className="text-xl sm:text-2xl lg:text-3xl py-2 tracking-widest font-semibold text-white">
           {title.toUpperCase()}
         </h1>
         <div className="relative flex items-center">
           <button
             onClick={scrollLeft}
-            className="absolute left-0 mr-4  transform -translate-y-1/2 z-10 p-2  hover:scale-110 transition-transform rounded-full "
+            className="absolute left-0 ml-2 sm:mr-4 transform -translate-y-1/2 z-10 p-2 hover:scale-110 transition-transform rounded-full"
             style={{ top: "50%" }}
           >
-            <FaArrowLeft className="text-white mr-2 " size={15} />
+            <FaArrowLeft className="text-white" size={15} />
           </button>
           <div
             ref={scrollableRef}
-            className="flex overflow-x-scroll scroll-smooth overflow-y-hidden no-scrollbar cursor-move mx-8"
+            className="flex overflow-x-scroll sm:overflow-x-auto scroll-smooth overflow-y-hidden no-scrollbar cursor-move ml-2 sm:mx-8"
           >
             <div className="flex ml-2">
               {movies?.map((movie, index) => (
@@ -65,10 +65,10 @@ const MovieList = ({ title, movies }) => {
           </div>
           <button
             onClick={scrollRight}
-            className="absolute right-0 ml-4  transform -translate-y-1/2 z-10 p-2  hover:scale-110 transition-transform rounded-full "
+            className="absolute right-0 mr-2 sm:ml-4 transform -translate-y-1/2 z-10 p-2 hover:scale-110 transition-transform rounded-full"
             style={{ top: "50%" }}
           >
-            <FaArrowRight className="text-white  ml-2 " size={15} />
+            <FaArrowRight className="text-white" size={15} />
           </button>
         </div>
       </div>

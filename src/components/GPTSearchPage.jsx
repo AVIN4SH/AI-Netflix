@@ -7,10 +7,10 @@ const GPTSearchPage = () => {
   return (
     <div
       style={{ backgroundImage: `url(${BGBANNER})` }}
-      className="bg-cover -z-10  bg-center h-[100vh] w-full"
+      className="bg-cover bg-center h-screen lg:h-screen w-full"
     >
-      <div className="absolute  flex flex-col w-[100vw] h-[100vh]  text-center py-24 px-16">
-        <div className=" ">
+      <div className="absolute inset-0 flex flex-col items-center justify-center text-center py-24 px-4 sm:px-8">
+        <div className="w-full max-w-lg">
           <GPTSearchBar />
           <GPTMovieSuggestion />
         </div>

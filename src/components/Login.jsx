@@ -98,13 +98,13 @@ const Login = () => {
   return (
     <div
       style={{ backgroundImage: `url(${BGBANNER})` }}
-      className="bg-cover   bg-center h-[100vh] w-full"
+      className="bg-cover bg-center h-[100vh] w-full"
     >
       <Header />
-      <div className=" container  mx-auto flex flex-col justify-center items-center text-center h-[90vh]">
+      <div className="container mx-auto flex flex-col justify-center items-center text-center h-[90vh]">
         <form
           onSubmit={(e) => e.preventDefault()}
-          className="p-16 rounded lg:mt-20 bg-black/75 w-10/12 sm:w-8/12 md:6/12 lg:w-4/12"
+          className="p-8 lg:p-16 rounded lg:mt-20 bg-black/75 w-10/12 sm:w-8/12 md:w-6/12 lg:w-4/12"
         >
           <h2 className="text-white text-left mx-8 p-2 my-2 text-4xl font-bold">
             {isSignInForm ? "Sign In" : "Sign Up"}
@@ -114,7 +114,7 @@ const Login = () => {
               type="text"
               ref={name}
               placeholder="Full Name"
-              className="p-4 m-2 w-[94%] rounded bg-black/45 border  border-[#818181] font-semibold focus:border-2 focus:border-white text-gray-200"
+              className="p-4 m-2 w-full lg:w-[94%] rounded bg-black/45 border border-[#818181] font-semibold focus:border-2 focus:border-white text-gray-200"
               required
             />
           )}
@@ -122,21 +122,21 @@ const Login = () => {
             type="email"
             ref={email}
             placeholder="Email Address"
-            className="p-4 m-2 w-[94%] rounded bg-black/45 border  border-[#818181] font-semibold focus:border-2 focus:border-white text-gray-200"
+            className="p-4 m-2 w-full lg:w-[94%] rounded bg-black/45 border border-[#818181] font-semibold focus:border-2 focus:border-white text-gray-200"
             required
           />
           <input
             type="password"
             ref={password}
             placeholder="Password"
-            className="p-4 m-2 w-[94%] rounded bg-black/45 border  border-[#818181] font-semibold focus:border-2 focus:border-white text-gray-200 "
+            className="p-4 m-2 w-full lg:w-[94%] rounded bg-black/45 border border-[#818181] font-semibold focus:border-2 focus:border-white text-gray-200"
             required
           />
           <p className="text-sm text-red-500">{errorMessage}</p>
           {isSignInForm && (
             <p
               onClick={handleTestAccClick}
-              className="text-white/75 border cursor-pointer py-2 rounded my-4 w-[94%] mx-auto"
+              className="text-white/75 border cursor-pointer py-2 rounded my-4 w-full lg:w-[94%] mx-auto"
             >
               <span> TEST ACCOUNT </span>
               {showTestAcc && (
@@ -150,16 +150,16 @@ const Login = () => {
             </p>
           )}
           <button
-            className="px-4 py-2 mx-2 my-4 w-[94%] rounded bg-[#f00] hover:scale-105 transition-transform hover:bg-[#f22727] text-white"
+            className="px-4 py-2 mx-2 my-4 w-full lg:w-[94%] rounded bg-[#f00] hover:scale-105 transition-transform hover:bg-[#f22727] text-white"
             onClick={handleButtonClick}
           >
             {isSignInForm ? "Sign In" : "Sign Up"}
           </button>
           <p className="text-white my-3">OR</p>
-          <p className="mx-4 p-2 my-2 text-white ">
+          <p className="mx-4 p-2 my-2 text-white">
             {isSignInForm ? "New to Netflix?" : "Already have an Account?"}{" "}
             <span
-              className=" font-bold cursor-pointer "
+              className="font-bold cursor-pointer"
               onClick={toggleSignUpForm}
             >
               {isSignInForm ? "Sign Up" : "Sign In"}
