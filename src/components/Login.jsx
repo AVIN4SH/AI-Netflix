@@ -15,6 +15,8 @@ const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null);
 
+  const [showTestAcc, setShowTestAcc] = useState(false);
+
   const dispatch = useDispatch();
 
   //we can get value entered in input fields using state variables, but here we use the useRef react hook:
@@ -84,9 +86,13 @@ const Login = () => {
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
-          setErrorMessage(errorCode + " - " + errorMessage);
+          setErrorMessage(errorMessage);
         });
     }
+  };
+
+  const handleTestAccClick = () => {
+    setShowTestAcc(!showTestAcc);
   };
 
   return (
@@ -127,19 +133,28 @@ const Login = () => {
             required
           />
           <p className="text-sm text-red-500">{errorMessage}</p>
+          {isSignInForm && (
+            <p
+              onClick={handleTestAccClick}
+              className="text-white/75 border cursor-pointer py-2 rounded my-4 w-[94%] mx-auto"
+            >
+              <span> TEST ACCOUNT </span>
+              {showTestAcc && (
+                <>
+                  <br />
+                  <span> Email: test@gmail.com </span>
+                  <br />
+                  <span> Password: Password@123</span>
+                </>
+              )}
+            </p>
+          )}
           <button
             className="px-4 py-2 mx-2 my-4 w-[94%] rounded bg-[#f00] hover:scale-105 transition-transform hover:bg-[#f22727] text-white"
             onClick={handleButtonClick}
           >
             {isSignInForm ? "Sign In" : "Sign Up"}
           </button>
-          {/* Add Below functionality later */}
-          {/* <br />
-          {isSignInForm && (
-            <a className="my-4 mx-2 text-white font-bold" href="">
-              Forgot Password?
-            </a>
-          )} */}
           <p className="text-white my-3">OR</p>
           <p className="mx-4 p-2 my-2 text-white ">
             {isSignInForm ? "New to Netflix?" : "Already have an Account?"}{" "}
