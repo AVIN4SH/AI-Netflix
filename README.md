@@ -1,5 +1,5 @@
-<h1></h1>
-<h2>🚀 Created a React app that portrays a Sign In/Up and Home page similar to Netflix:</h2>
+<h1>🚀 Created a Basic React App in React JS (with these key features):</h1>
+<h2>🚥 App with Sign In/Up and Home page similar to Netflix </h2>
 <h3>🎬 Main movie displayed with title, description, and background trailer</h3>
 <h3>🎞️ Secondary movie browse list for Now Playing, Popular, and Trending movies</h3>
 <h3>📱 Responsive design ensuring seamless experience across devices</h3>
