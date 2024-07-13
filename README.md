@@ -6,4 +6,4 @@
 <h3>🔑 Auth validation using Firebase for secure Sign Up, Sign In, and Sign Out functionality</h3>
 <h3>🎨 Styled using Tailwind CSS for modern and intuitive UI</h3>
 <h3>🌐 Implemented routing with react-router-dom for efficient navigation</h3>
-<h2>🟢 Live at: - </h2>
+<h2>🟢 Live at: (currently unavailable) </h2>
